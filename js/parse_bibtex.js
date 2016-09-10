@@ -76,7 +76,7 @@ function parse(str, htmlID) {
             addString += name.last;
             if (j < names.length-1) addString += ", ";
         }
-        if (entry.author.others) addString += ",<i>et al</i>."
+        if (entry.author.others) addString += ", <i>et al</i>."
         addString += ", ";
         // add title
         addString += "\"" + entry.title + "\", ";
