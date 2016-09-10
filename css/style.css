@@ -1,0 +1,44 @@
+
+#main_body {
+  width: 800px;
+  min-height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+body {
+  font-family: "Times New Roman", Georgia, Serif;
+  font-size: large;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/* Blue links for directed clicking that underline upon hover */
+a.nofmt_links {
+  color: blue;
+  text-decoration: none;
+}
+a.nofmt_links:hover {
+  text-decoration: underline;
+}
+
+/* Hidden links embedded in text that underline upon hover */
+a.text_links {
+  color: blue;
+  text-decoration: none;
+}
+a.text_links:hover {
+  text-decoration: underline;
+}
+
+/* Apply padding to td elements that are direct children of the tr element. */
+tr.spaceUnder > td
+{
+  padding-bottom: 0.7em;
+}
