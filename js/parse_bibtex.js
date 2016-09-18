@@ -70,11 +70,21 @@ function parse(str, htmlID) {
         var addString = "";
         var names = entry.author.names;
         for (var j = 0; j < names.length; j++) {
+            var newName = "";   // name of new author
             var name = names[j];
-            addString += name.first.charAt(0) + ". ";
-            if (name.middle!=null) addString += name.middle.charAt(0) + ". ";
-            addString += name.last;
-            if (j < names.length-1) addString += ", ";
+            // add first name
+            newName += name.first.charAt(0) + ". ";
+            // add middle name
+            if (name.middle!=null) newName += name.middle.charAt(0) + ". ";
+            // add last name
+            newName += name.last;
+            // bold my own name
+            if (newName.indexOf("R. Zou")!=-1 || newName.indexOf("R. S. Zou")!=-1)
+                newName = "<b>" + newName + "</b>";
+            // add name separation for names not the last
+            if (j < names.length-1) newName += ", ";
+            // append name to overall citation string
+            addString += newName;
         }
         if (entry.author.others) addString += ", <i>et al</i>."
         addString += ", ";
@@ -85,8 +95,9 @@ function parse(str, htmlID) {
         // add year
         addString += entry.year + ". ";
         // add link to paper
-        addString +=
-            "[<a href=\"" + entry.paper + "\"target=\"_blank\" class=\"nofmt_links\">Paper</a>] ";
+        if (entry.paper!=null) {
+            addString += "[<a href=\"" + entry.paper + "\"target=\"_blank\" class=\"nofmt_links\">Paper</a>] ";
+        }
         // add link to code
         if (entry.code!=null) {
             addString += "[<a href=\"" + entry.code + "\"target=\"_blank\" class=\"nofmt_links\">Code</a>] ";
